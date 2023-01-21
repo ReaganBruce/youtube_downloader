@@ -12,10 +12,10 @@ def download(link):
     
     print('-' * 50)
     print('VIDEO INFORMATION:')
-    print('Author: {}'.format(youtube_video.author))
-    print('Title: {}'.format(youtube_video.title))  
-    print('Length: {}'.format(youtube_length))   
-    print('Views: {}'.format(youtube_video.views))   
+    print('Author: {0}'.format(youtube_video.author))
+    print('Title: {0}'.format(youtube_video.title))  
+    print('Length: {0}'.format(youtube_length))   
+    print('Views: {0}'.format(youtube_video.views))   
     print('-' * 50)
     
     to_download = input('Continue downloading this video? \n(y/n) ').casefold()
@@ -24,7 +24,7 @@ def download(link):
         try:
             print('Downloading...........')
             youtube_video.streams.get_highest_resolution().download(file_path)
-            print('Download completed!')
+            print('Download completed at file location: {0}'.format(file_path))
         except Exception as err:
             print(err)
             print('Error downloading video.')
