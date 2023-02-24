@@ -1,6 +1,7 @@
 from dotenv import load_dotenv
 load_dotenv()
 from pytube import YouTube
+from tqdm import tqdm
 import datetime
 import os
 
@@ -30,9 +31,9 @@ def download(link):
     
     if to_download == 'y':
         try:
-            print('Downloading...........\n')
-            youtube_video.streams.get_highest_resolution().download(file_path)
-            print('Download completed at file location: {0}'.format(file_path))
+            for i in tqdm(range(100), desc="Download In Progress", ncols = 100): #CLI progress bar module
+                youtube_video.streams.get_highest_resolution().download(file_path)
+            print('\nDownload completed at file location: {0}'.format(file_path))
         except Exception as err:
             print(err)
             print('Error downloading video.')
